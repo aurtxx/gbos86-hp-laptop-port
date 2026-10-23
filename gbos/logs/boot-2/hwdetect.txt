@@ -1,0 +1,121 @@
+== kernel
+Linux (none) 6.18.21-gbos-whl #38 SMP PREEMPT Mon Oct 19 20:01:57 UTC 2026 x86_64 GNU/Linux
+== cpu
+model name	: 12th Gen Intel(R) Core(TM) i3-1215U
+avx yes
+avx2 yes
+fma yes
+bmi2 yes
+sha_ni yes
+gfni yes
+avx_vnni yes
+avx512f NO
+== dmi
+sys_vendor=HP
+product_name=HP Laptop 15s-fr5xxx
+product_version=
+bios_version=F.28
+board_name=8A20
+== pci devices without a driver (slot class vendor:device)
+0000:00:00.0 0x060000 0x8086:0x4609
+0000:00:02.0 0x030000 0x8086:0x46b3
+0000:00:04.0 0x118000 0x8086:0x461d
+0000:00:08.0 0x088000 0x8086:0x464f
+0000:00:14.2 0x050000 0x8086:0x51ef
+0000:00:1f.0 0x060100 0x8086:0x5182
+0000:00:1f.3 0x040100 0x8086:0x51c8
+0000:00:1f.4 0x0c0500 0x8086:0x51a3
+0000:00:1f.5 0x0c8000 0x8086:0x51a4
+0000:01:00.0 0x028000 0x10ec:0xc822
+== usb devices (vid:pid product)
+1ea7:0066 2.4G Mouse drv=usbhid,
+0bda:b00c Bluetooth Radio drv=
+058f:6387 Mass Storage drv=usb-storage,
+0408:536c HP TrueVision HD Camera drv=uvcvideo,
+== input
+N: Name="Lid Switch"
+H: Handlers=event0 
+N: Name="Power Button"
+H: Handlers=kbd event1 
+N: Name="Power Button"
+H: Handlers=kbd event2 
+N: Name="AT Translated Set 2 keyboard"
+H: Handlers=sysrq kbd leds event3 
+N: Name="ELAN0791:00 04F3:30FD Mouse"
+H: Handlers=event4 
+N: Name="ELAN0791:00 04F3:30FD Touchpad"
+H: Handlers=event5 
+N: Name="2.4G Mouse"
+H: Handlers=sysrq kbd leds event6 
+N: Name="2.4G Mouse"
+H: Handlers=event7 
+N: Name="2.4G Mouse"
+H: Handlers=event8 
+N: Name="2.4G Mouse Consumer Control"
+H: Handlers=kbd event9 
+N: Name="2.4G Mouse System Control"
+H: Handlers=kbd event10 
+== net
+dummy0
+erspan0
+gre0
+gretap0
+ifb0
+ifb1
+ip6_vti0
+ip6gre0
+ip6tnl0
+ip_vti0
+lo
+sit0
+tunl0
+== bluetooth
+ls: /sys/class/bluetooth: No such file or directory
+== backlight
+== gpu (drm card: driver)
+card0: simple-framebuffer 
+== gpu dmesg
+[    0.839978][    T1] simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+[    0.839981][    T1] [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+[    0.853197][    T1] simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+[    5.685884][    T1] gbos-stage0: loaded gbos.cfg: MODE=ask SHELL_AT=none LOAD_I915=1 LOAD_WIFI=0
+[   22.003913][    T1] gbos-stage0: modprobe i915 (UHD 620). If the screen freezes here, set LOAD_I915=0 in gbos.cfg
+[   22.006210][    T1] gbos-stage0: i915 load FAILED rc=1
+== sound
+--- no soundcards ---
+== sound codecs
+== sound pcm
+== sound inputs
+== sound speaker nodes
+== sound dmesg
+[    0.045843][    T0] software IO TLB: area num 8.
+[    0.788510][    T1] PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+[    0.788511][    T1] software IO TLB: mapped [mem 0x0000000031799000-0x0000000035799000] (64MB)
+[    0.863221][    T1] usbcore: registered new interface driver snd-usb-audio
+[    0.863730][    T1] snd_hda_intel 0000:00:1f.3: Digital mics found on Skylake+ platform, using SOF driver
+== soundwire
+== soundwire dmesg
+== rfkill
+== missing firmware
+== MODOPTS
+mt7921_common.disable_clc=1
+== display (drm connectors: status, enabled, first modes)
+card0-Unknown-1 status=connected enabled=enabled
+    1920x1080
+== video devices (cameras)
+video0 HP TrueVision HD Camera: HP Tru
+video1 HP TrueVision HD Camera: HP Tru
+== driver messages (wifi, graphics, camera, audio, bluetooth; first 250)
+[    0.839978][    T1] simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+[    0.839981][    T1] [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+[    0.853197][    T1] simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+== lsmod
+Module                  Size  Used by    Not tainted
+video                  81920  0 
+wmi                    40960  1 video
+zram                   86016  0 
+zsmalloc               36864  1 zram
+sdhci_pci             143360  0 
+cqhci                  36864  1 sdhci_pci
+sdhci_uhs2             36864  1 sdhci_pci
+sdhci                 118784  2 sdhci_pci,sdhci_uhs2

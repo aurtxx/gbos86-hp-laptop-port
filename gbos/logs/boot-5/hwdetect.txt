@@ -1,0 +1,539 @@
+== kernel
+Linux (none) 6.18.21-gbos-whl #38 SMP PREEMPT Mon Oct 19 20:01:57 UTC 2026 x86_64 GNU/Linux
+== cpu
+model name	: 12th Gen Intel(R) Core(TM) i3-1215U
+avx yes
+avx2 yes
+fma yes
+bmi2 yes
+sha_ni yes
+gfni yes
+avx_vnni yes
+avx512f NO
+== dmi
+sys_vendor=HP
+product_name=HP Laptop 15s-fr5xxx
+product_version=
+bios_version=F.28
+board_name=8A20
+== pci devices without a driver (slot class vendor:device)
+0000:00:00.0 0x060000 0x8086:0x4609
+0000:00:08.0 0x088000 0x8086:0x464f
+0000:00:14.2 0x050000 0x8086:0x51ef
+0000:00:1f.0 0x060100 0x8086:0x5182
+0000:00:1f.5 0x0c8000 0x8086:0x51a4
+== usb devices (vid:pid product)
+1ea7:0066 2.4G Mouse drv=usbhid,
+0bda:b00c Bluetooth Radio drv=btusb,
+058f:6387 Mass Storage drv=usb-storage,
+0408:536c HP TrueVision HD Camera drv=uvcvideo,
+== input
+N: Name="Lid Switch"
+H: Handlers=event0 
+N: Name="Power Button"
+H: Handlers=kbd event1 
+N: Name="Power Button"
+H: Handlers=kbd event2 
+N: Name="AT Translated Set 2 keyboard"
+H: Handlers=sysrq kbd leds event3 
+N: Name="ELAN0791:00 04F3:30FD Mouse"
+H: Handlers=event4 
+N: Name="ELAN0791:00 04F3:30FD Touchpad"
+H: Handlers=event5 
+N: Name="2.4G Mouse"
+H: Handlers=sysrq kbd leds event6 
+N: Name="2.4G Mouse"
+H: Handlers=event7 
+N: Name="2.4G Mouse"
+H: Handlers=event8 
+N: Name="2.4G Mouse Consumer Control"
+H: Handlers=kbd event9 
+N: Name="2.4G Mouse System Control"
+H: Handlers=kbd event10 
+N: Name="Intel HID events"
+H: Handlers=kbd event11 
+N: Name="Intel HID 5 button array"
+H: Handlers=kbd event12 
+N: Name="Video Bus"
+H: Handlers=kbd event13 
+N: Name="sof-hda-dsp Mic"
+H: Handlers=event14 
+N: Name="sof-hda-dsp Headphone"
+H: Handlers=event15 
+N: Name="sof-hda-dsp HDMI/DP,pcm=3"
+H: Handlers=event16 
+N: Name="sof-hda-dsp HDMI/DP,pcm=4"
+H: Handlers=event17 
+N: Name="sof-hda-dsp HDMI/DP,pcm=5"
+H: Handlers=event18 
+N: Name="HP WMI hotkeys"
+H: Handlers=kbd event19 
+== net
+dummy0
+erspan0
+gre0
+gretap0
+ifb0
+ifb1
+ip6_vti0
+ip6gre0
+ip6tnl0
+ip_vti0
+lo
+sit0
+tunl0
+wlan0
+== bluetooth
+hci0
+== backlight
+/sys/class/backlight/intel_backlight max=96000 cur=17349
+== gpu (drm card: driver)
+card1: i915 0x8086 0x46b3 
+== gpu dmesg
+[    0.848398][    T1] simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+[    0.848408][    T1] [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+[    0.862833][    T1] simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+[    4.701689][    T1] gbos-stage0: loaded gbos.cfg: MODE=ask SHELL_AT=none LOAD_I915=1 LOAD_WIFI=0
+[   25.671870][    T1] gbos-stage0: modprobe i915 (UHD 620). If the screen freezes here, set LOAD_I915=0 in gbos.cfg
+[   25.674024][    T1] gbos-stage0: i915 load FAILED rc=1
+[   29.759164][  T372] xe 0000:00:02.0: Your graphics device 46b3 is not officially supported
+[   29.759164][  T372] use xe.force_probe='46b3' and i915.force_probe='!46b3'
+[   29.759164][  T372] CONFIG_DRM_I915_FORCE_PROBE='!46b3' configuration options.
+[   30.202376][  T372] i915 0000:00:02.0: [drm] Found alderlake_p (device ID 46b3) integrated display version 13.00 stepping D0
+[   30.203808][  T372] i915 0000:00:02.0: [drm] VT-d active for gfx access
+[   30.248111][  T372] i915 0000:00:02.0: vgaarb: deactivate vga console
+[   30.248289][  T372] i915 0000:00:02.0: [drm] Using Transparent Hugepages
+[   30.249943][  T372] i915 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[   30.259562][   T84] i915 0000:00:02.0: [drm] Finished loading DMC firmware i915/adlp_dmc.bin (v2.20)
+[   30.307301][  T372] i915 0000:00:02.0: [drm] GT0: GuC firmware i915/adlp_guc_70.bin version 70.49.4
+[   30.307319][  T372] i915 0000:00:02.0: [drm] GT0: HuC firmware i915/tgl_huc.bin version 7.9.3
+[   30.325341][  T372] i915 0000:00:02.0: [drm] GT0: HuC: authenticated for all workloads
+[   30.326745][  T372] i915 0000:00:02.0: [drm] GT0: GUC: submission enabled
+[   30.326754][  T372] i915 0000:00:02.0: [drm] GT0: GUC: SLPC enabled
+[   30.327282][  T372] i915 0000:00:02.0: [drm] GT0: GUC: RC enabled
+[   30.332618][  T372] i915 0000:00:02.0: [drm] Registered 4 planes with drm panic
+[   30.332633][  T372] [drm] Initialized i915 1.6.0 for 0000:00:02.0 on minor 1
+[   30.341042][  T372] fbcon: i915drmfb (fb0) is primary device
+[   30.368115][  T372] i915 0000:00:02.0: [drm] fb0: i915drmfb frame buffer device
+[   30.555749][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: bound 0000:00:02.0 (ops intel_audio_component_bind_ops [i915])
+== sound
+ 0 [sofhdadsp      ]: sof-hda-dsp - sof-hda-dsp
+                      HP-HPLaptop15s_fr5xxx-8A20
+== sound codecs
+--- /proc/asound/card0/codec#0
+Codec: Realtek ALC236
+Address: 0
+Vendor Id: 0x10ec0236
+Subsystem Id: 0x103c8a20
+Revision Id: 0x100002
+Default PCM:
+Node 0x12 [Pin Complex] wcaps 0x40040b: Stereo Amp-In
+  Pin Default 0x411111f0: [N/A] Speaker at Ext Rear
+Node 0x13 [Pin Complex] wcaps 0x40040b: Stereo Amp-In
+  Pin Default 0x40000000: [N/A] Line Out at Ext N/A
+Node 0x14 [Pin Complex] wcaps 0x40058d: Stereo Amp-Out
+  Pin Default 0x90170110: [Fixed] Speaker at Int N/A
+Node 0x18 [Pin Complex] wcaps 0x40048b: Stereo Amp-In
+  Pin Default 0x411111f0: [N/A] Speaker at Ext Rear
+Node 0x19 [Pin Complex] wcaps 0x40048b: Stereo Amp-In
+  Pin Default 0x04a11020: [Jack] Mic at Ext Right
+Node 0x1a [Pin Complex] wcaps 0x40048b: Stereo Amp-In
+  Pin Default 0x411111f0: [N/A] Speaker at Ext Rear
+Node 0x1b [Pin Complex] wcaps 0x40058f: Stereo Amp-In Amp-Out
+  Pin Default 0x411111f0: [N/A] Speaker at Ext Rear
+Node 0x1d [Pin Complex] wcaps 0x400400: Mono
+  Pin Default 0x40600001: [N/A] Modem Line at Ext N/A
+Node 0x1e [Pin Complex] wcaps 0x400781: Stereo Digital
+  Pin Default 0x411111f0: [N/A] Speaker at Ext Rear
+Node 0x21 [Pin Complex] wcaps 0x40058d: Stereo Amp-Out
+  Pin Default 0x04211040: [Jack] HP Out at Ext Right
+--- /proc/asound/card0/codec#2
+Codec: Intel Alderlake-P HDMI
+Address: 2
+Vendor Id: 0x8086281c
+Subsystem Id: 0x80860101
+Revision Id: 0x100000
+Default PCM:
+Node 0x04 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x06 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x08 [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0a [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0b [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0c [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0d [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0e [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+Node 0x0f [Pin Complex] wcaps 0x40778d: 8-Channels Digital Amp-Out CP
+  Pin Default 0x18560010: [Jack] Digital Out at Int HDMI
+== sound pcm
+00-00: HDA Analog (*) :  : playback 1 : capture 1
+00-03: HDMI1 (*) :  : playback 1
+00-04: HDMI2 (*) :  : playback 1
+00-05: HDMI3 (*) :  : playback 1
+00-06: DMIC (*) :  : capture 1
+00-07: DMIC16kHz (*) :  : capture 1
+00-31: HDA Analog Deep Buffer (*) :  : playback 1
+== sound inputs
+N: Name="sof-hda-dsp Mic"
+N: Name="sof-hda-dsp Headphone"
+N: Name="sof-hda-dsp HDMI/DP,pcm=3"
+N: Name="sof-hda-dsp HDMI/DP,pcm=4"
+N: Name="sof-hda-dsp HDMI/DP,pcm=5"
+== sound speaker nodes
+--- /proc/asound/card0/codec#0
+Node 0x02 [Audio Output] wcaps 0x41d: Stereo Amp-Out
+  Control: name="Speaker Playback Volume", index=0, device=0
+    ControlAmp: chs=3, dir=Out, idx=0, ofs=0
+  Amp-Out caps: ofs=0x57, nsteps=0x57, stepsize=0x02, mute=0
+  Amp-Out vals:  [0x00 0x00]
+  Converter: stream=0, channel=0
+  PCM:
+    rates [0x60]: 44100 48000
+    bits [0xe]: 16 20 24
+    formats [0x1]: PCM
+  Power states:  D0 D1 D2 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x03 [Audio Output] wcaps 0x41d: Stereo Amp-Out
+  Control: name="Headphone Playback Volume", index=0, device=0
+    ControlAmp: chs=3, dir=Out, idx=0, ofs=0
+  Amp-Out caps: ofs=0x57, nsteps=0x57, stepsize=0x02, mute=0
+  Amp-Out vals:  [0x00 0x00]
+  Converter: stream=0, channel=0
+  PCM:
+    rates [0x60]: 44100 48000
+    bits [0xe]: 16 20 24
+    formats [0x1]: PCM
+  Power states:  D0 D1 D2 D3 EPSS
+  Power: setting=D0, actual=D0
+Node 0x14 [Pin Complex] wcaps 0x40058d: Stereo Amp-Out
+  Control: name="Speaker Playback Switch", index=0, device=0
+    ControlAmp: chs=3, dir=Out, idx=0, ofs=0
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x80 0x80]
+  Pincap 0x00010014: OUT EAPD Detect
+  EAPD 0x2: EAPD
+  Pin Default 0x90170110: [Fixed] Speaker at Int N/A
+    Conn = Analog, Color = Unknown
+    DefAssociation = 0x1, Sequence = 0x0
+    Misc = NO_PRESENCE
+  Pin-ctls: 0x40: OUT
+  Unsolicited: tag=00, enabled=0
+  Power states:  D0 D1 D2 D3 EPSS
+  Power: setting=D0, actual=D0
+  Connection: 1
+     0x02
+Node 0x17 [Vendor Defined Widget] wcaps 0xf00000: Mono
+Node 0x21 [Pin Complex] wcaps 0x40058d: Stereo Amp-Out
+  Control: name="Headphone Playback Switch", index=0, device=0
+    ControlAmp: chs=3, dir=Out, idx=0, ofs=0
+  Amp-Out caps: ofs=0x00, nsteps=0x00, stepsize=0x00, mute=1
+  Amp-Out vals:  [0x80 0x80]
+  Pincap 0x0001001c: OUT HP EAPD Detect
+  EAPD 0x2: EAPD
+  Pin Default 0x04211040: [Jack] HP Out at Ext Right
+    Conn = 1/8, Color = Black
+    DefAssociation = 0x4, Sequence = 0x0
+  Pin-ctls: 0xc0: OUT HP
+  Unsolicited: tag=01, enabled=1
+  Power states:  D0 D1 D2 D3 EPSS
+  Power: setting=D0, actual=D0
+  Connection: 2
+     0x02 0x03*
+--- /proc/asound/card0/codec#2
+Node 0x03 [Audio Output] wcaps 0x6611: 8-Channels Digital
+  Converter: stream=0, channel=0
+  Digital: Enabled
+  Digital category: 0x0
+  IEC Coding Type: 0x0
+  PCM:
+    rates [0x7f0]: 32000 44100 48000 88200 96000 176400 192000
+    bits [0x1a]: 16 24 32
+    formats [0x5]: PCM AC3
+  Power states:  D0 D3 EPSS
+  Power: setting=D0, actual=D0
+== sound dmesg
+[    0.045251][    T0] software IO TLB: area num 8.
+[    0.787582][    T1] PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+[    0.787584][    T1] software IO TLB: mapped [mem 0x000000003230a000-0x000000003630a000] (64MB)
+[    0.873813][    T1] usbcore: registered new interface driver snd-usb-audio
+[    0.874282][    T1] snd_hda_intel 0000:00:1f.3: Digital mics found on Skylake+ platform, using SOF driver
+[   30.555322][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: enabling device (0000 -> 0002)
+[   30.555642][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: DSP detected with PCI class/subclass/prog-if 0x040100
+[   30.555749][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: bound 0000:00:02.0 (ops intel_audio_component_bind_ops [i915])
+[   30.564119][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: use msi interrupt mode
+[   30.577026][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: hda codecs found, mask 5
+[   30.577071][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: using HDA machine driver skl_hda_dsp_generic now
+[   30.577107][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: NHLT device BT(0) detected, ssp_mask 0x4
+[   30.577140][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: BT link detected in NHLT tables: 0x4
+[   30.577173][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: DMICs detected in NHLT tables: 2
+[   30.686250][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware paths/files for ipc type 0:
+[   30.686290][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3:  Firmware file:     intel/sof/sof-adl.ri
+[   30.686317][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3:  Topology file:     intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   30.686520][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware info: version 2:2:0-57864
+[   30.686546][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware: ABI 3:22:1 Kernel ABI 3:23:1
+[   30.785547][  T383] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware info: version 2:2:0-57864
+[   30.785669][  T383] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware: ABI 3:22:1 Kernel ABI 3:23:1
+[   31.794821][  T402] sof-audio-pci-intel-tgl 0000:00:1f.3: loading topology: intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   31.795686][  T402] sof-audio-pci-intel-tgl 0000:00:1f.3: Topology: ABI 3:22:1 Kernel ABI 3:23:1
+[   31.796662][  T402] skl_hda_dsp_generic skl_hda_dsp_generic: ASoC: Parent card not yet available, widget card binding deferred
+[   31.813115][  T402] snd_hda_codec_alc269 ehdaudio0D0: ALC236: picked fixup  for PCI SSID 103c:8a20
+[   31.827766][  T402] snd_hda_codec_alc269 ehdaudio0D0: autoconfig for ALC236: line_outs=1 (0x14/0x0/0x0/0x0/0x0) type:speaker
+[   31.828968][  T402] snd_hda_codec_alc269 ehdaudio0D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[   31.830054][  T402] snd_hda_codec_alc269 ehdaudio0D0:    hp_outs=1 (0x21/0x0/0x0/0x0/0x0)
+[   31.831185][  T402] snd_hda_codec_alc269 ehdaudio0D0:    mono: mono_out=0x0
+[   31.832108][  T402] snd_hda_codec_alc269 ehdaudio0D0:    inputs:
+[   31.832996][  T402] snd_hda_codec_alc269 ehdaudio0D0:      Mic=0x19
+[   31.882730][  T402] skl_hda_dsp_generic skl_hda_dsp_generic: hda_dsp_hdmi_build_controls: no PCM in topology for HDMI converter 3
+[   31.904734][  T402] input: sof-hda-dsp Mic as /devices/pci0000:00/0000:00:1f.3/skl_hda_dsp_generic/sound/card0/input16
+[   31.906568][  T402] input: sof-hda-dsp Headphone as /devices/pci0000:00/0000:00:1f.3/skl_hda_dsp_generic/sound/card0/input17
+[   31.908512][  T402] input: sof-hda-dsp HDMI/DP,pcm=3 as /devices/pci0000:00/0000:00:1f.3/skl_hda_dsp_generic/sound/card0/input18
+[   31.910422][  T402] input: sof-hda-dsp HDMI/DP,pcm=4 as /devices/pci0000:00/0000:00:1f.3/skl_hda_dsp_generic/sound/card0/input19
+[   31.912680][  T402] input: sof-hda-dsp HDMI/DP,pcm=5 as /devices/pci0000:00/0000:00:1f.3/skl_hda_dsp_generic/sound/card0/input20
+[   35.116164][    T1] gbos-stage0: hwdetect: devices after 0s: wifi=wlan0  bt=hci0  sound= 0 [sofhdadsp ]: sof-hda-dsp - sof-hda-dsp; backlight=intel_backlight 
+== soundwire
+== soundwire dmesg
+[   30.686317][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3:  Topology file:     intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   31.794821][  T402] sof-audio-pci-intel-tgl 0000:00:1f.3: loading topology: intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   31.796662][  T402] skl_hda_dsp_generic skl_hda_dsp_generic: ASoC: Parent card not yet available, widget card binding deferred
+== rfkill
+phy0 wlan soft=0 hard=0
+hci0 bluetooth soft=0 hard=0
+== missing firmware
+== MODOPTS
+mt7921_common.disable_clc=1
+== display (drm connectors: status, enabled, first modes)
+card1-DP-1 status=disconnected enabled=disabled
+card1-DP-2 status=disconnected enabled=disabled
+card1-DP-3 status=disconnected enabled=disabled
+card1-DP-4 status=disconnected enabled=disabled
+card1-HDMI-A-1 status=disconnected enabled=disabled
+card1-eDP-1 status=connected enabled=enabled
+    1920x1080
+== video devices (cameras)
+video0 HP TrueVision HD Camera: HP Tru
+video1 HP TrueVision HD Camera: HP Tru
+== xe parameters
+disable_display=N
+disable_power_well=-1
+dmc_firmware_path=(null)
+edp_vswing=0
+enable_dc=-1
+enable_dmc_wl=-1
+enable_dp_mst=Y
+enable_dpcd_backlight=-1
+enable_dpt=Y
+enable_dsb=Y
+enable_fbc=-1
+enable_flipq=N
+enable_ips=Y
+enable_panel_replay=-1
+enable_psr=-1
+enable_psr2_sel_fetch=Y
+enable_sagv=Y
+force_execlist=N
+force_probe=
+force_reset_modeset_test=N
+gsc_firmware_path=(null)
+guc_firmware_path=(null)
+guc_log_level=1
+huc_firmware_path=(null)
+invert_brightness=0
+load_detect_test=N
+lvds_channel_mode=0
+max_vfs=4294967295
+nuclear_pageflip=N
+panel_use_ssc=-1
+probe_display=Y
+psr_safest_params=N
+svm_notifier_size=512
+vbt_firmware=(null)
+vbt_sdvo_panel_type=-1
+verbose_state_checks=Y
+vram_bar_size=0
+wedged_mode=1
+== i915 parameters
+disable_display=N
+disable_power_well=-1
+dmc_firmware_path=(null)
+edp_vswing=0
+enable_dc=-1
+enable_dmc_wl=-1
+enable_dp_mst=Y
+enable_dpcd_backlight=-1
+enable_dpt=Y
+enable_dsb=Y
+enable_fbc=-1
+enable_flipq=N
+enable_guc=-1
+enable_hangcheck=Y
+enable_ips=Y
+enable_panel_replay=-1
+enable_psr=-1
+enable_psr2_sel_fetch=Y
+enable_sagv=Y
+error_capture=Y
+force_probe=
+force_reset_modeset_test=N
+gsc_firmware_path=(null)
+guc_firmware_path=(null)
+guc_log_level=-1
+huc_firmware_path=(null)
+invert_brightness=0
+lmem_bar_size=0
+lmem_size=0
+load_detect_test=N
+lvds_channel_mode=0
+memtest=N
+mitigations=auto
+mmio_debug=0
+modeset=-1
+nuclear_pageflip=N
+panel_use_ssc=-1
+psr_safest_params=N
+request_timeout_ms=20000
+reset=3
+vbt_firmware=(null)
+vbt_sdvo_panel_type=-1
+verbose_state_checks=Y
+== driver messages (wifi, graphics, camera, audio, bluetooth; first 250)
+[    0.848398][    T1] simple-framebuffer simple-framebuffer.0: [drm] Registered 1 planes with drm panic
+[    0.848408][    T1] [drm] Initialized simpledrm 1.0.0 for simple-framebuffer.0 on minor 0
+[    0.862833][    T1] simple-framebuffer simple-framebuffer.0: [drm] fb0: simpledrmdrmfb frame buffer device
+[   29.759164][  T372] xe 0000:00:02.0: Your graphics device 46b3 is not officially supported
+[   29.759164][  T372] by xe driver in this kernel version. To force Xe probe,
+[   30.202376][  T372] i915 0000:00:02.0: [drm] Found alderlake_p (device ID 46b3) integrated display version 13.00 stepping D0
+[   30.203808][  T372] i915 0000:00:02.0: [drm] VT-d active for gfx access
+[   30.248289][  T372] i915 0000:00:02.0: [drm] Using Transparent Hugepages
+[   30.259562][   T84] i915 0000:00:02.0: [drm] Finished loading DMC firmware i915/adlp_dmc.bin (v2.20)
+[   30.307301][  T372] i915 0000:00:02.0: [drm] GT0: GuC firmware i915/adlp_guc_70.bin version 70.49.4
+[   30.307319][  T372] i915 0000:00:02.0: [drm] GT0: HuC firmware i915/tgl_huc.bin version 7.9.3
+[   30.325341][  T372] i915 0000:00:02.0: [drm] GT0: HuC: authenticated for all workloads
+[   30.326745][  T372] i915 0000:00:02.0: [drm] GT0: GUC: submission enabled
+[   30.326754][  T372] i915 0000:00:02.0: [drm] GT0: GUC: SLPC enabled
+[   30.327282][  T372] i915 0000:00:02.0: [drm] GT0: GUC: RC enabled
+[   30.332618][  T372] i915 0000:00:02.0: [drm] Registered 4 planes with drm panic
+[   30.332633][  T372] [drm] Initialized i915 1.6.0 for 0000:00:02.0 on minor 1
+[   30.368115][  T372] i915 0000:00:02.0: [drm] fb0: i915drmfb frame buffer device
+[   30.555322][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: enabling device (0000 -> 0002)
+[   30.555642][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: DSP detected with PCI class/subclass/prog-if 0x040100
+[   30.555749][  T372] sof-audio-pci-intel-tgl 0000:00:1f.3: bound 0000:00:02.0 (ops intel_audio_component_bind_ops [i915])
+[   30.564119][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: use msi interrupt mode
+[   30.577026][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: hda codecs found, mask 5
+[   30.577071][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: using HDA machine driver skl_hda_dsp_generic now
+[   30.577107][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: NHLT device BT(0) detected, ssp_mask 0x4
+[   30.577140][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: BT link detected in NHLT tables: 0x4
+[   30.577173][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: DMICs detected in NHLT tables: 2
+[   30.654580][  T372] Bluetooth: HCI device and connection manager initialized
+[   30.654595][  T372] Bluetooth: HCI socket layer initialized
+[   30.686250][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware paths/files for ipc type 0:
+[   30.686290][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3:  Firmware file:     intel/sof/sof-adl.ri
+[   30.686317][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3:  Topology file:     intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   30.686520][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware info: version 2:2:0-57864
+[   30.686546][  T110] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware: ABI 3:22:1 Kernel ABI 3:23:1
+[   30.699961][   T87] Bluetooth: hci0: RTL: examining hci_ver=0a hci_rev=000c lmp_ver=0a lmp_subver=8822
+[   30.700947][   T87] Bluetooth: hci0: RTL: rom_version status=0 version=3
+[   30.701871][   T87] Bluetooth: hci0: RTL: btrtl_initialize: key id 0
+[   30.701893][   T87] Bluetooth: hci0: RTL: loading rtl_bt/rtl8822cu_fw.bin
+[   30.706134][   T87] Bluetooth: hci0: RTL: loading rtl_bt/rtl8822cu_config.bin
+[   30.706933][   T87] Bluetooth: hci0: RTL: cfg_sz 6, total sz 37274
+[   30.785547][  T383] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware info: version 2:2:0-57864
+[   30.785669][  T383] sof-audio-pci-intel-tgl 0000:00:1f.3: Firmware: ABI 3:22:1 Kernel ABI 3:23:1
+[   30.882208][   T87] Bluetooth: hci0: RTL: fw version 0x2b66d962
+[   31.794821][  T402] sof-audio-pci-intel-tgl 0000:00:1f.3: loading topology: intel/sof-tplg/sof-hda-generic-2ch.tplg
+[   31.795686][  T402] sof-audio-pci-intel-tgl 0000:00:1f.3: Topology: ABI 3:22:1 Kernel ABI 3:23:1
+== lsmod
+Module                  Size  Used by    Tainted: G  
+hp_wmi                 40960  0 
+hp_bioscfg             81920  0 
+firmware_attributes_class    12288  1 hp_bioscfg
+wmi_bmof               12288  0 
+snd_soc_skl_hda_dsp    12288  0 
+snd_soc_intel_sof_board_helpers    24576  1 snd_soc_skl_hda_dsp
+snd_soc_intel_hda_dsp_common    12288  1 snd_soc_intel_sof_board_helpers
+intel_rapl_msr         20480  0 
+snd_soc_dmic           12288  1 
+btusb                  81920  0 
+btrtl                  32768  1 btusb
+btmtk                  36864  1 btusb
+btintel                69632  1 btusb
+btbcm                  28672  1 btusb
+bluetooth             925696  6 btusb,btrtl,btmtk,btintel,btbcm
+snd_sof_pci_intel_tgl    20480  0 
+snd_sof_pci_intel_cnl    20480  1 snd_sof_pci_intel_tgl
+snd_sof_intel_hda_generic    36864  2 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl
+soundwire_intel        77824  1 snd_sof_intel_hda_generic
+soundwire_generic_allocation    20480  1 soundwire_intel
+snd_sof_intel_hda_sdw_bpt    16384  1 soundwire_intel
+snd_sof_intel_hda_common   188416  4 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl,snd_sof_intel_hda_generic,snd_sof_intel_hda_sdw_bpt
+snd_soc_hdac_hda       20480  1 snd_sof_intel_hda_common
+snd_sof_intel_hda_mlink    40960  4 snd_sof_intel_hda_generic,soundwire_intel,snd_sof_intel_hda_sdw_bpt,snd_sof_intel_hda_common
+snd_sof_intel_hda      20480  2 snd_sof_intel_hda_generic,snd_sof_intel_hda_common
+snd_hda_ext_core       40960  5 snd_sof_intel_hda_sdw_bpt,snd_sof_intel_hda_common,snd_soc_hdac_hda,snd_sof_intel_hda_mlink,snd_sof_intel_hda
+soundwire_cadence      61440  1 soundwire_intel
+snd_sof_pci            20480  3 snd_sof_pci_intel_tgl,snd_sof_pci_intel_cnl,snd_sof_intel_hda_generic
+snd_sof_xtensa_dsp     12288  1 snd_sof_intel_hda_generic
+snd_soc_sdw_utils     118784  1 snd_sof_intel_hda_generic
+snd_sof               380928  6 snd_sof_pci_intel_cnl,snd_sof_intel_hda_generic,snd_sof_intel_hda_sdw_bpt,snd_sof_intel_hda_common,snd_sof_intel_hda,snd_sof_pci
+snd_sof_utils          12288  1 snd_sof
+crc8                   12288  1 soundwire_cadence
+soundwire_bus        1183744  4 soundwire_intel,soundwire_generic_allocation,soundwire_cadence,snd_soc_sdw_utils
+i2c_i801               32768  0 
+i2c_smbus              16384  1 i2c_i801
+i915                 5062656  2 
+intel_gtt              32768  1 i915
+xe                   3923968  0 
+drm_gpusvm_helper      32768  1 xe
+drm_gpuvm              61440  1 xe
+drm_buddy              28672  2 i915,xe
+drm_suballoc_helper    24576  1 xe
+drm_exec               20480  2 xe,drm_gpuvm
+i2c_algo_bit           20480  2 i915,xe
+drm_display_helper    290816  2 i915,xe
+gpu_sched              73728  1 xe
+drm_ttm_helper         20480  1 xe
+processor_thermal_device_pci    16384  0 
+processor_thermal_device    24576  1 processor_thermal_device_pci
+processor_thermal_power_floor    16384  2 processor_thermal_device_pci,processor_thermal_device
+processor_thermal_wt_req    12288  1 processor_thermal_device
+processor_thermal_wt_hint    16384  2 processor_thermal_device_pci,processor_thermal_device
+processor_thermal_rfim    40960  1 processor_thermal_device
+processor_thermal_mbox    12288  4 processor_thermal_power_floor,processor_thermal_wt_req,processor_thermal_wt_hint,processor_thermal_rfim
+platform_temperature_control    20480  1 processor_thermal_device
+processor_thermal_rapl    12288  1 processor_thermal_device
+processor_thermal_soc_slider    16384  1 processor_thermal_device
+platform_profile       24576  2 hp_wmi,processor_thermal_soc_slider
+rtw88_8822ce           12288  0 
+rtw88_8822c           561152  1 rtw88_8822ce
+rtw88_pci              40960  1 rtw88_8822ce
+rtw88_core            315392  2 rtw88_8822c,rtw88_pci
+intel_rapl_common      49152  2 intel_rapl_msr,processor_thermal_rapl
+video                  81920  2 i915,xe
+wmi                    40960  4 hp_wmi,hp_bioscfg,wmi_bmof,video
+intel_hid              28672  0 
+sparse_keymap          16384  2 hp_wmi,intel_hid
+int3403_thermal        12288  0 
+int340x_thermal_zone    16384  2 processor_thermal_device,int3403_thermal
+int3400_thermal        24576  0 
+acpi_thermal_rel       24576  1 int3400_thermal
+mt7921_common         122880  0 
+mt792x_lib             86016  1 mt7921_common
+mt76_connac_lib       110592  2 mt7921_common,mt792x_lib
+mt76                  180224  3 mt7921_common,mt792x_lib,mt76_connac_lib
+mac80211             1486848  6 rtw88_pci,rtw88_core,mt7921_common,mt792x_lib,mt76_connac_lib,mt76
+libarc4                12288  1 mac80211
+cfg80211             1564672  5 rtw88_core,mt7921_common,mt76_connac_lib,mt76,mac80211
+rfkill                 40960  3 hp_wmi,bluetooth,cfg80211
+hwmon                  49152  4 hp_wmi,i915,xe,mt7921_common
+zram                   86016  0 
+zsmalloc               36864  1 zram
+sdhci_pci             143360  0 
+cqhci                  36864  1 sdhci_pci
+sdhci_uhs2             36864  1 sdhci_pci
+sdhci                 118784  2 sdhci_pci,sdhci_uhs2

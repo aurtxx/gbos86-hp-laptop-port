@@ -78,6 +78,11 @@ gbos86-hp-laptop-port/
 |   |-- loader.conf             # systemd-boot timeout and default entry configuration
 |   `-- entries/
 |       `-- gbos.conf           # Kernel command-line entry (ibt=off drm.panic_screen=kmsg)
+|-- gbos/
+|   `-- logs/                   # Raw hwdetect.txt logs from Boot-1 through Boot-9
+|       |-- boot-1/hwdetect.txt
+|       |-- ...
+|       `-- boot-9/hwdetect.txt
 |-- patches/
 |   |-- 0001-systemd-boot-alder-lake-ibt-off.patch
 |   |-- 0002-hwdetect-module-directory-discovery.patch
