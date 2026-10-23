@@ -1,0 +1,52 @@
+# Operating System files
+[Dd]esktop.ini
+Thumbs.db
+.DS_Store
+$RECYCLE.BIN/
+
+# Large disk images and system binary blobs (Do not commit raw OS images)
+*.img
+*.iso
+*.bin
+*.vhd
+*.vhdx
+*.cpio
+*.efi
+*.EFI
+
+# Compressed archives and packages
+*.tar
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+*.7z
+
+# Kernel and build artifacts
+*.o
+*.ko
+*.so
+*.a
+vmlinux*
+initramfs*
+
+# Raw trace dumps and large logs
+*.log
+*.txt.0*
+kvmtrace.txt
+pstore*
+
+# Python & editor caches
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local scratchpad and temporary files
+scratch/
+tmp/
+build/
+dist/

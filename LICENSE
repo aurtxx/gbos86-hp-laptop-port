@@ -1,0 +1,37 @@
+MIT License
+
+Copyright (c) 2026 aurtxx and Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+### Third-Party Notices & Attribution
+
+This repository contains diagnostic notes, patches, and configurations for booting
+gbOS86 on x86 laptop hardware. It does not distribute the underlying proprietary
+operating system images or copyrighted Google/gbOS binaries.
+
+* **gbOS / Android-x86 / AOSP**: Portions of code analyzed in this repository derive from
+  the Android Open Source Project (licensed under the Apache License 2.0) and Android-x86.
+* **Linux Kernel**: The Linux kernel is licensed under GNU General Public License v2.
+  Kernel parameters and module hooks described herein interface with GPLv2 software.
+* **KernelSU**: KernelSU is licensed under the GNU General Public License v3.
+* **systemd-boot**: systemd-boot is licensed under the GNU Lesser General Public License v2.1+.
+* **util-linux (sfdisk)**: Licensed under GPLv2+ / LGPLv2.1+.

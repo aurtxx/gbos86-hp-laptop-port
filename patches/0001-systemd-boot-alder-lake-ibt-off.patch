@@ -1,0 +1,36 @@
+From: aurtxx <aurtxx@users.noreply.github.com>
+Subject: [PATCH 1/4] bootloader: deploy systemd-boot with ibt=off for Alder Lake
+
+Intel Alder Lake (12th Gen) CPUs enforce Indirect Branch Tracking (IBT)
+as part of Control-flow Enforcement Technology (CET). The gbOS86 kernel
+(6.18.21-gbos-whl) contains KernelSU hook trampolines that lack ENDBR64
+instructions, triggering a fatal kernel panic on the very first instruction
+executed after EFI handover:
+
+  Kernel panic - not syncing: Fatal exception
+  [    0.641882] Missing ENDBR: ksu_handle_init+0x0/0x10 [kernelsu]
+  [    0.641885] Kernel panic - not syncing: Fatal exception
+  [    0.641888] CR2: 0000000000000000
+
+The original gbOS86 bootloader was a unified kernel image (UKI) named
+EFI/BOOT/BOOTX64.EFI with hardcoded kernel command-line parameters that
+could not be modified at boot.
+
+This change separates the UKI into:
+1. systemd-boot (sd-boot x86_64) installed as EFI/BOOT/BOOTX64.EFI
+2. The extracted kernel/initramfs payload stored as EFI/BOOT/KERNEL.EFI
+3. A systemd-boot loader entry (loader/entries/gbos.conf) passing `ibt=off`:
+
+--- a/loader/entries/gbos.conf
++++ b/loader/entries/gbos.conf
+@@ -0,0 +1,3 @@
++title gbOS86 (Alder Lake CET fix)
++linux /EFI/BOOT/KERNEL.EFI
++options ibt=off drm.panic_screen=kmsg
+--- a/loader/loader.conf
++++ b/loader/loader.conf
+@@ -0,0 +1,4 @@
++timeout 3
++default gbos.conf
++console-mode max
++editor yes

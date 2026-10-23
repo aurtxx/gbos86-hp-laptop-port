@@ -1,0 +1,46 @@
+From: aurtxx <aurtxx@users.noreply.github.com>
+Subject: [PATCH 3/4] hook: bypass Setup Wizard blocker and suppress failing system OTA engine
+
+On first boot, Google's Setup Wizard blocks progression at OtaStatusFragment:
+"System update failed" with error status 0x713.
+
+Root Cause:
+update_engine expects a 12.88 GB dynamic super partition with dual A/B slots
+(/dev/block/by-name/boot_a). In gbOS86 live/USB installs, the system is backed
+by a linear read-only 3.68 GB EROFS super image booting via systemd-boot.
+Consequently, update_engine permanently fails verification and blocks setup.
+
+This patch:
+1. Adds `gbos_provision` to init.rc: automatically injects `device_provisioned 1`,
+   `user_setup_complete 1`, disables `setupwizard`, `SystemUpdateActivity`,
+   `SystemUpdateService`, and stops `update_engine`.
+2. Mask update_engine service definitions in Android init by bind mounting
+   an empty file over `/new/system/etc/init/update_engine.rc` and
+   `/new/system/etc/init/update_engine_sideload.rc`.
+
+--- a/gbos/hook.sh
++++ b/gbos/hook.sh
+@@ -381,6 +381,7 @@
+     write /sys/kernel/tracing/tracing_on 0
+     $TRUSTYSTOP
++    start gbos_provision
+     start gbos_audiodiag
+     start gbos_devname
+     start gbos_iptsd
+@@ -440,6 +441,14 @@
++service gbos_provision /system/bin/sh -c "for i in 1 2 3 4 5; do settings put global device_provisioned 1 && settings put secure user_setup_complete 1 && settings put global ota_disable_automatic_update 1 && pm disable com.google.android.setupwizard && pm disable com.google.android.desktop.setupwizard && pm disable com.google.android.gms/.update.SystemUpdateActivity && pm disable com.google.android.gms/.update.SystemUpdateService && stop update_engine && stop update_engine_sideload && break; sleep 2; done"
++    user root
++    group root
++    seclabel u:r:shell:s0
++    oneshot
++    disabled
++
+ # Logical display size (RESOLUTION in gbos.cfg); "reset" = native 1920x1080.
+ service gbos_wmsize
+@@ -701,6 +710,9 @@
+ # apgetty (UART shell) has no UART configured here and crash-loops
+ : > /tmp/empty.rc && mount --bind /tmp/empty.rc /new/system_ext/etc/init/apgetty.rc && log "hook: apgetty disabled"
++for rc in /new/system/etc/init/update_engine.rc /new/system/etc/init/update_engine_sideload.rc; do
++  [ -f "$rc" ] && mount --bind /tmp/empty.rc "$rc" && log "hook: $(basename $rc) disabled"
++done
+ log "hook: kvm: $(ls /sys/class/misc | grep -E 'kvm|vhost' | tr '\n' ' ')"

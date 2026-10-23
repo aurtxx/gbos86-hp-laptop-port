@@ -1,0 +1,41 @@
+From: aurtxx <aurtxx@users.noreply.github.com>
+Subject: [PATCH 2/4] hwdetect: fix kernel module directory lookup for versioned directory names
+
+gbos/hwdetect.sh attempted to bind mount `$G/modules/lib/modules/$KVER`
+over `/lib/modules`. However, in this build, `uname -r` returns
+`6.18.21-gbos-whl`, while the directory extracted from the official ISO
+is named `6.18.21-gbos-whl+` (with a trailing plus sign).
+
+As a result, `gbos_modules_mount` failed on boot with:
+  hwdetect: gbos/modules/lib/modules/6.18.21-gbos-whl missing, only the initramfs modules are available
+
+Without this module tree, coldplug could not load Intel Alder Lake GPU
+drivers (i915), audio drivers (snd_sof_pci_intel_tgl), Wi-Fi, or Bluetooth.
+
+This patch updates `gbos_modules_mount` to probe both `$KVER` and
+`${KVER}+` and mounts the discovered directory to `/lib/modules/$KVER`.
+
+--- a/gbos/hwdetect.sh
++++ b/gbos/hwdetect.sh
+@@ -18,12 +18,17 @@
+ gbos_modules_mount() {
+   KVER=$(uname -r)
++  MDIR=""
+   if [ -f $G/modules/lib/modules/$KVER/modules.dep ]; then
+-    mount --bind $G/modules/lib/modules /lib/modules 2>/dev/null \
+-      && log "hwdetect: module tree $KVER ($(find /lib/modules/$KVER -name '*.ko' | wc -l) modules) from gbos/modules" \
+-      || log "hwdetect: bind mount of gbos/modules FAILED"
++    MDIR=$G/modules/lib/modules/$KVER
++  elif [ -f $G/modules/lib/modules/${KVER}+/modules.dep ]; then
++    MDIR=$G/modules/lib/modules/${KVER}+
++  fi
++  if [ -n "$MDIR" ]; then
++    mkdir -p /lib/modules/$KVER 2>/dev/null
++    mount --bind "$MDIR" /lib/modules/$KVER 2>/dev/null \
++      && log "hwdetect: module tree $KVER ($(find /lib/modules/$KVER -name '*.ko' | wc -l) modules) from $(basename $MDIR)" \
++      || log "hwdetect: bind mount of $MDIR FAILED"
+     return 0
+   fi
+   log "hwdetect: gbos/modules/lib/modules/$KVER missing, only the initramfs modules are available"
+   return 1
+ }
