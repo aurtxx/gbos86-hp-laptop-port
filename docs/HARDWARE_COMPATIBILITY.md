@@ -1,4 +1,4 @@
-# Hardware Compatibility Matrix: HP 15s-fr5009TU
+﻿# Hardware Compatibility Matrix: HP 15s-fr5009TU
 
 This document provides a detailed breakdown of the hardware components on the **HP 15s-fr5009TU** laptop and their verified operating status under gbOS86 (Linux kernel 6.18.21-gbos-whl).
 

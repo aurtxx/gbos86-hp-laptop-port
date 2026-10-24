@@ -1,0 +1,72 @@
+From: aurtxx <aurtxx@users.noreply.github.com>
+Subject: [PATCH 5/5] hook: add automated NVMe SSD dual-boot persistent storage engine
+
+In default community builds, `verify_persistent_usb()` hardcoded an exclusion
+of internal NVMe storage (`case "$STICKDISK" in nvme*) return 1;;`), forcing
+gbOS86 to run in volatile `tmpfs` mode when booted from internal SSD partitions.
+
+This patch updates `gbos/hook.sh` to implement `verify_persistent_storage()`:
+1. Supports loop-mounting a 64 MB `metadata.img` on FAT32 `GBOSSYS` as `/dev/loop7`
+   to provide Android `/metadata` without requiring an extra physical partition.
+2. Detects the dedicated 24.9 GB NVMe data partition (`/dev/nvme0n1p5`).
+3. Enforces safety bounds checking: strictly verifies the target block device
+   has a sector count between 40M and 65M (~20-32 GB), making it mathematically
+   impossible to touch the primary Windows 11 partition (C: / 444 GB).
+4. Automates first-boot formatting to `ext4` with `-O verity` and `-m 0` using
+   the bundled musl `mke2fs` binary, enabling Google Play Store updates.
+5. Direct mounts `/dev/nvme0n1p5` to `/new/data` and exports `FROM=nvme`.
+
+--- a/gbos/hook.sh
++++ b/gbos/hook.sh
+@@ -48,70 +48,45 @@
+-verify_persistent_usb() {
+-  [ -z "$DEV" ] && { log "hook: SAFETY ABORT: DEV is empty"; return 1; }
+-
+-  # Strict exclusion of internal storage types
+-  case "$STICKDISK" in
+-    nvme*|mmcblk*) log "hook: SAFETY ABORT: parent disk $STICKDISK is internal storage"; return 1 ;;
+-  esac
+-  ...
++verify_persistent_storage() {
++  [ -z "$DEV" ] && { log "hook: SAFETY ABORT: DEV is empty"; return 1; }
++
++  # 1. Setup metadata loop from metadata.img if available
++  if [ -f "$G/metadata.img" ]; then
++    losetup /dev/loop7 "$G/metadata.img" 2>/dev/null
++    P3_CANON="/dev/loop7"
++  fi
++
++  # 2. Check for internal NVMe data partition (Partition 5 / Drive F:)
++  DATA_NODE=$(findfs LABEL=GBOS_DATA 2>/dev/null)
++  
++  if [ -z "$DATA_NODE" ] && [ -b "/dev/nvme0n1p5" ]; then
++    SZ=$(cat /sys/class/block/nvme0n1p5/size 2>/dev/null || echo 0)
++    if [ "$SZ" -gt 40000000 ] && [ "$SZ" -lt 65000000 ]; then
++      log "hook: initializing /dev/nvme0n1p5 as GBOS_DATA (ext4 with verity)..."
++      SF_LD="$G/installer/lib/ld-musl-x86_64.so.1"
++      SF_LIB="$G/installer/lib"
++      SF_MK="$G/installer/bin/mke2fs"
++      if [ -x "$SF_MK" ] && [ -x "$SF_LD" ]; then
++        "$SF_LD" --library-path "$SF_LIB" "$SF_MK" -F -q -t ext4 -m 0 -O verity -L GBOS_DATA /dev/nvme0n1p5 >> /gbos/logs/install.log 2>&1
++        sleep 1
++        DATA_NODE=$(findfs LABEL=GBOS_DATA 2>/dev/null || echo "/dev/nvme0n1p5")
++      fi
++    fi
++  fi
++
++  if [ -n "$DATA_NODE" ] && [ -b "$DATA_NODE" ]; then
++    P4_CANON=$(readlink -f "$DATA_NODE" 2>/dev/null)
++    [ -z "$P3_CANON" ] && P3_CANON="/dev/loop7"
++    log "hook: verified persistent NVMe storage: meta=$P3_CANON data=$P4_CANON"
++    mkdir -p /new/data /new/metadata
++    mount -t ext4 -o noatime,nodiratime "$P4_CANON" /new/data 2>/dev/null && log "hook: mounted $P4_CANON -> /new/data"
++    mount -t ext4 -o noatime,nodiratime "$P3_CANON" /new/metadata 2>/dev/null && log "hook: mounted $P3_CANON -> /new/metadata"
++    FROM=nvme
++    return 0
++  fi
++
++  log "hook: persistent storage not found; falling back to tmpfs"
++  return 1
+ }
+-verify_persistent_usb || log "hook: persistent USB storage disabled; falling back to tmpfs"
++verify_persistent_storage || log "hook: persistent storage disabled; falling back to tmpfs"
